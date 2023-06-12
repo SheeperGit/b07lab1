@@ -17,24 +17,24 @@ public class Driver {
 		else
 			System.out.println("1 is not a root of s\n");
 
-		// double[] c3 = {6,1,2,5};
-		// int[] e3 = {1, 3, 4, 5};
-		// Polynomial p3 = new Polynomial(c3, e3);
+		double[] c3 = {6,1,2,5};
+		int[] e3 = {1, 3, 4, 5};
+		Polynomial p3 = new Polynomial(c3, e3);
 
-		// double[] c4 = {1,2,-3,-4.1,5};
-		// int[] e4 = {6,7,8,9,10};
-		// Polynomial p4 = new Polynomial(c4, e4);
+		double[] c4 = {1,2,-3,-4.1,5};
+		int[] e4 = {6,7,8,9,10};
+		Polynomial p4 = new Polynomial(c4, e4);
 
-		// p3.display();
-		// p4.display();
+		p3.display();
+		p4.display();
 
-		// Polynomial p5 = p3.multiply(p4);
-		// System.out.println("mult of p3, p4 = ");
-		// p5.display();
+		Polynomial p5 = p3.multiply(p4);
+		System.out.println("mult of p3, p4 = ");
+		p5.display();
 
-		// File f = new File("/home/sean_the_sheep/b07lab2dir/b07lab1/test.txt");
-		// Polynomial p6 = new Polynomial(f);
-		// p6.display();
+		File f = new File("/home/sean_the_sheep/b07lab2dir/b07lab1/test.txt");
+		Polynomial p6 = new Polynomial(f);
+		p6.display();
 
 		Polynomial p7 = new Polynomial(new double[]{5, -3, 7}, new int[]{0, 2, 8});
 		p7.display();
@@ -44,8 +44,8 @@ public class Driver {
 		p8.display();
 		p8.saveToFile("/home/sean_the_sheep/b07lab2dir/b07lab1/saveFile2.txt");
 
-		// File f = new File("/home/sean_the_sheep/b07lab2dir/b07lab1/saveFile2.txt");
-		// Polynomial p9 = new Polynomial(f);
-		// p9.display();
+		File f2 = new File("/home/sean_the_sheep/b07lab2dir/b07lab1/saveFile2.txt");
+		Polynomial p9 = new Polynomial(f2);
+		p9.display();
 	}
 }

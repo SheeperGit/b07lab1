@@ -10,8 +10,8 @@ public class Polynomial {
 	int exponents[];
 	
 	public Polynomial() {
-		coefficients = new double[]{0};
-		exponents = new int[]{0};
+		this.coefficients = null;
+		this.exponents = null;
 	}
 	
 	public Polynomial(double coefficients[], int exponents[]) {
@@ -24,6 +24,11 @@ public class Polynomial {
 
 		for(int j = 0; j < exponents.length; j++) {
 			this.exponents[j] = exponents[j];
+		}
+
+		if (this.coefficients.length == 0){
+			this.coefficients = null;
+			this.exponents = null;
 		}
 	}
 
@@ -82,6 +87,10 @@ public class Polynomial {
 	public Polynomial add(Polynomial p) {
 		int max_len = Math.max(coefficients.length, p.coefficients.length);
 	    double[] res = new double[max_len];
+
+		if (this.coefficients == null) return p;
+
+		if (p.coefficients == null) return this;
 		
 		for (int i = 0; i < coefficients.length; i++) {
 			res[i] += coefficients[i];
@@ -95,6 +104,9 @@ public class Polynomial {
 	
 	public double evaluate(double x) {
 		double evaluation = 0;
+
+		if (this.coefficients == null) return 0;
+
 		for (int k = 0; k < coefficients.length; k++) {
 			evaluation += coefficients[k] * Math.pow(x, k);
 		}
@@ -102,13 +114,13 @@ public class Polynomial {
 	}
 	
 	public boolean hasRoot(double root) {
-		if (evaluate(root) == 0) {
-			return true;
-		}
+		if (evaluate(root) == 0) return true;
 		return false;
 	}
 
 	public Polynomial multiply(Polynomial p2) {
+		if (this.coefficients == null || p2.coefficients == null) return new Polynomial();
+
 		int len1 = coefficients.length;
 		int len2 = p2.coefficients.length;
 		int resLen = len1 * len2; // <- Max possible len of the resulting poly 
@@ -159,6 +171,11 @@ public class Polynomial {
 	}
 
 	public void display(){
+		if (this.coefficients == null || this.exponents == null) {
+			System.out.println("Nothing in this one!");
+			return;
+		}
+
 		int co_size = this.coefficients.length;
 
 		// Print out coefficients and exponents. //
@@ -175,6 +192,7 @@ public class Polynomial {
 
 	public String poly2str() {
 		String polyStr = "";
+		if (this.coefficients == null || this.exponents == null) return polyStr;
 	
 		for (int i = 0; i < this.coefficients.length; i++) {
 			double co = this.coefficients[i];
